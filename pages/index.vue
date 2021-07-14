@@ -1,7 +1,12 @@
 <template>
-  <Tutorial/>
+    <div class="home-page">
+      here is the home page.
+    </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name:"HomePage",
+  layout:'default-layout'
+}
 </script>

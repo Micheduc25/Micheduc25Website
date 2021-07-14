@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'micheduc25',
+    title: 'Micheduc25',
     htmlAttrs: {
       lang: 'en'
     },
@@ -15,12 +15,16 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      { rel: 'preconnect', crossorigin:true, href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', crossorigin:true, href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet', crossorigin:true, href: 'https://fonts.googleapis.com/css2?family=Iceland&family=Roboto:wght@300;400;700;900&display=swap' },
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "@/assets/scss/main.scss"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
