@@ -1,7 +1,7 @@
 <template>
     <div>
         <app-header/>
-        <nuxt/>
+        <nuxt class="main-nuxt"/>
         <app-footer/>
     </div>
 </template>
@@ -16,5 +16,7 @@ import AppHeader from '~/components/global/AppHeader.vue'
 </script>
 
 <style lang="scss" scoped>
-
+    .main-nuxt{
+        min-height: 80vh;
+    }
 </style>

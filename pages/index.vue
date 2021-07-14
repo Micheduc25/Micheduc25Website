@@ -7,6 +7,5 @@
 <script>
 export default {
   name:"HomePage",
-  layout:'default-layout'
 }
 </script>

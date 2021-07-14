@@ -38,7 +38,20 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/fontawesome'
   ],
+
+  fontawesome: {
+    icons: {
+      solid: [ 'faHome', ],
+      regular: [],
+      light: [],
+      duotone: [],
+      brands: ['faFacebook','faTwitter','faGithub','faGitlab']
+    },
+    component: 'Fa',
+    suffix: true
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
