@@ -17,6 +17,6 @@ import AppHeader from '~/components/global/AppHeader.vue'
 
 <style lang="scss" scoped>
     .main-nuxt{
-        min-height: 80vh;
+        min-height: 95vh;
     }
 </style>

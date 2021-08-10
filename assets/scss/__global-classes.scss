@@ -1,5 +1,10 @@
 .tech-text{
     font-family: "iceland",'Open Sans';
-    font-size:1.9rem;
+    // font-size:1.9rem;
+}
+
+.page-content{
+    max-width:1400px;
+    @apply mx-auto;
 }
 
