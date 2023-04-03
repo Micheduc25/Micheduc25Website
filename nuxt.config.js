@@ -15,7 +15,7 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "The Micheduc official website which describes all our services, tech, innovation, software"
+          "The Micheduc25 official website which describes all our services, tech, innovation, software"
       },
       { name: "format-detection", content: "telephone=no" }
     ],

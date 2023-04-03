@@ -101,12 +101,12 @@
       </section>
 
       <section
-        class="stats-band bg-white py-10 rounded-lg shadow-lg flex justify-around mx-10 md:mx-20 mb-12"
+        class="stats-band bg-white py-10 rounded-lg shadow-lg flex justify-around mx-10 md:mx-20 mb-12 p-2"
       >
         <div
           v-for="(item, index) in statsData"
           :key="`stats${index}`"
-          class="stat-item flex flex-col items-center"
+          class="stat-item flex flex-col items-center "
         >
           <div class="mb-6 flex justify-center w-20 xs:w-32 md:w-40">
             <img
@@ -147,6 +147,7 @@ export default {
   data() {
     return {
       isLoadingStats: false,
+      enableAnimations: true,
       bandData: [
         {
           title: "Web Development",
@@ -217,7 +218,7 @@ export default {
     isElementVisible(el) {
       const pos = el.getBoundingClientRect();
       if (
-        pos.top >= 0 &&
+        pos.top >= 20 &&
         pos.bottom <=
           (window.innerHeight || document.documentElement.clientHeight)
       )
@@ -245,6 +246,7 @@ export default {
 
       //animate stats numbers when visible1
       if (this.isElementVisible(statsBand) && !this.isLoadingStats) {
+        
         for (let i = 0; i < this.statsData.length; i++) {
           let j = 0;
           const interval = setInterval(() => {
@@ -258,41 +260,54 @@ export default {
     }
   },
 
+  created() {
+
+  },
+
   mounted() {
     this.$nextTick(() => {
       window.scrollTo(0, 0);
+    //       if (!sessionStorage.getItem("isFirstLoad")) {
+    //   this.enableAnimations = true;
+    //   sessionStorage.setItem("isFirstLoad","true");
+    // }
 
-      //make band items appear on scroll
-      const bandItems = document.getElementsByClassName("band-item");
-      const prodItems = document.getElementsByClassName("info-card");
-      const statsNumbers = document.getElementsByClassName("stats-number");
-      const statsBand = document.querySelector(".stats-band");
-      const appHeader = document.querySelector(".app-header");
-      this.animateBands(bandItems);
-      this.animateBands(prodItems);
-      this.animateStatsBand();
-
-      window.addEventListener("scroll", e => {
+      if (this.enableAnimations) {
+        //make band items appear on scroll
+        const bandItems = document.getElementsByClassName("band-item");
+        const prodItems = document.getElementsByClassName("info-card");
+        const statsNumbers = document.getElementsByClassName("stats-number");
+        const statsBand = document.querySelector(".stats-band");
+        const appHeader = document.querySelector(".app-header");
         this.animateBands(bandItems);
         this.animateBands(prodItems);
         this.animateStatsBand();
 
-        //   if (window.scrollY === document.querySelector(".top-band").clientHeight) {
-        //   appHeader.classList.replace(
-        //     "bg-transparent",
-        //     "bg-secondary"
-        //   );
-        // } else {
-        //   if (appHeader.classList.contains("bg-secondary"))
-        //     appHeader.classList.replace(
-        //       "bg-secondary",
-        //       "bg-transparent"
-        //     );
-        // }
-      });
-      this.$refs.bandTitle.classList.add("animate__fadeInUp");
-      this.$refs.bandTitle.classList.replace("opacity-0", "opacity-100");
+        window.addEventListener("scroll", e => {
+          this.animateBands(bandItems);
+          this.animateBands(prodItems);
+          this.animateStatsBand();
+
+          //   if (window.scrollY === document.querySelector(".top-band").clientHeight) {
+          //   appHeader.classList.replace(
+          //     "bg-transparent",
+          //     "bg-secondary"
+          //   );
+          // } else {
+          //   if (appHeader.classList.contains("bg-secondary"))
+          //     appHeader.classList.replace(
+          //       "bg-secondary",
+          //       "bg-transparent"
+          //     );
+          // }
+        });
+        this.$refs.bandTitle.classList.add("animate__fadeInUp");
+        this.$refs.bandTitle.classList.replace("opacity-0", "opacity-100");
+      }
     });
+  },
+  beforeDestroy() {
+    if (this.enableAnimations) window.removeEventListener("scroll",(e)=>{});
   }
 };
 </script>
