@@ -17,7 +17,8 @@
             </div> -->
       <nav ref="navMenu" class="app-header__navigation flex items-center">
         <nuxt-link to="/services" class="services nav-link">Services</nuxt-link>
-        <nuxt-link to="/about" class="about nav-link">About Us</nuxt-link>
+        <nuxt-link to="/services" class="services nav-link">Projects</nuxt-link>
+        <nuxt-link to="/about" class="about nav-link">About Me</nuxt-link>
         <nuxt-link to="/contact" class="contact nav-link">Contact</nuxt-link>
       </nav>
       <button
@@ -49,7 +50,6 @@ export default {
   },
 
   mounted() {
-
     this.$nextTick(() => {
       document.addEventListener("click", () => {
         if (this.$refs.navMenu.classList.contains("show")) {

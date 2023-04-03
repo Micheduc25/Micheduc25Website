@@ -1,18 +1,41 @@
 <template>
   <div class="home-page">
     <main class="page-content overflow-hidden ">
+      <!-- large version -->
+
+      <div
+        v-show="showImage"
+        class="fixed z-50 w-screen h-screen flex flex-col items-center justify-center"
+      >
+        <div
+          @click="showImage = !showImage"
+          class="flex justify-end text-red-500 w-1/2 cursor-pointer"
+        >
+          X
+        </div>
+        <img
+          src="@/assets/images/michel.jpg"
+          alt="A picture of Ndjock Michel Junior"
+          class="opacity-100 w-1/2 backdrop-filter backdrop-blur-sm "
+        />
+      </div>
       <section class="top-band flex items-center justify-center py-4 mb-6">
         <div class="content-wrapper">
           <div
             ref="bandTitle"
             class="animate__animated flex flex-col items-center opacity-0"
           >
-            <img src="@/assets/images/logo-white.png" alt="micheduc25 logo" />
+            <img
+              @click="showImage = true"
+              src="@/assets/images/michel.jpg"
+              alt="A picture of Ndjock Michel Junior"
+              class=" rounded-full object-cover w-72 h-72 flex-shrink-0 cursor-pointer"
+            />
 
             <h1
               class=" text-center mb-8 text-tertiary tech-text text-6xl md:text-8xl"
             >
-              Welcome to the Micheduc25 Tech Platform
+              Welcome to Ndjock Michel's Portfolio site
             </h1>
           </div>
 
@@ -20,8 +43,8 @@
             class="band-text text-justify mb-16 animate__animated animate__fadeInUp animate__delay-2s"
           >
             Discover the world of technology and IT like you have never seen it
-            before. At Micheduc25 we offer you services related to a variety of
-            technological aspects.
+            before. I offer you services related to a variety of technological
+            aspects.
             <nuxt-link
               to="/services"
               class=" text-primary underline hover:text-primary_light transition-colors"
@@ -55,7 +78,7 @@
               >Explore</nuxt-link
             >
             <nuxt-link to="/services" class="explore-button"
-              >Contact Us</nuxt-link
+              >Contact Me</nuxt-link
             >
           </div>
         </div>
@@ -148,6 +171,7 @@ export default {
     return {
       isLoadingStats: false,
       enableAnimations: true,
+      showImage: false,
       bandData: [
         {
           title: "Web Development",
@@ -246,7 +270,6 @@ export default {
 
       //animate stats numbers when visible1
       if (this.isElementVisible(statsBand) && !this.isLoadingStats) {
-        
         for (let i = 0; i < this.statsData.length; i++) {
           let j = 0;
           const interval = setInterval(() => {
@@ -260,17 +283,15 @@ export default {
     }
   },
 
-  created() {
-
-  },
+  created() {},
 
   mounted() {
     this.$nextTick(() => {
       window.scrollTo(0, 0);
-    //       if (!sessionStorage.getItem("isFirstLoad")) {
-    //   this.enableAnimations = true;
-    //   sessionStorage.setItem("isFirstLoad","true");
-    // }
+      //       if (!sessionStorage.getItem("isFirstLoad")) {
+      //   this.enableAnimations = true;
+      //   sessionStorage.setItem("isFirstLoad","true");
+      // }
 
       if (this.enableAnimations) {
         //make band items appear on scroll
@@ -307,7 +328,7 @@ export default {
     });
   },
   beforeDestroy() {
-    if (this.enableAnimations) window.removeEventListener("scroll",(e)=>{});
+    if (this.enableAnimations) window.removeEventListener("scroll", e => {});
   }
 };
 </script>
